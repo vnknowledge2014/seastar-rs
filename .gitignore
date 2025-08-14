@@ -279,3 +279,8 @@ Makefile.toml.bak
 
 # wasm-pack build artifacts
 pkg/
+
+# AI
+.claude
+.serena
+CLAUDE.md

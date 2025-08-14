@@ -1,0 +1,26 @@
+[package]
+name = "seastar-tests"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Comprehensive integration tests for Seastar-RS"
+
+[dependencies]
+seastar-core = { path = "../seastar-core" }
+tokio = { workspace = true, features = ["full"] }
+serde.workspace = true
+serde_json.workspace = true
+bytes.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+once_cell.workspace = true
+async-trait.workspace = true
+tempfile = "3.8"
+assert_matches = "1.5"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }

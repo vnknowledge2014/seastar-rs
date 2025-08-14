@@ -1,0 +1,28 @@
+[package]
+name = "seastar-http"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "HTTP server and client for Seastar-RS"
+
+[dependencies]
+seastar-core = { path = "../seastar-core" }
+seastar-net = { path = "../seastar-net" }
+seastar-util = { path = "../seastar-util" }
+futures.workspace = true
+async-trait.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+bytes.workspace = true
+serde.workspace = true
+tokio.workspace = true
+socket2.workspace = true
+http = "1.0"
+httparse = "1.8"
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util"] }

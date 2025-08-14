@@ -1,0 +1,27 @@
+[package]
+name = "seastar-examples"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Examples and demos for Seastar-RS"
+
+[dependencies]
+seastar-core = { path = "../seastar-core" }
+seastar-net = { path = "../seastar-net" }
+seastar-http = { path = "../seastar-http" }
+seastar-rpc = { path = "../seastar-rpc" }
+seastar-util = { path = "../seastar-util" }
+seastar-testing = { path = "../seastar-testing" }
+tokio.workspace = true
+futures.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true
+clap = { version = "4.0", features = ["derive"] }
+socket2.workspace = true
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }

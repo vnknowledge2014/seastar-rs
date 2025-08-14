@@ -1,0 +1,48 @@
+[package]
+name = "seastar-benchmarks"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Performance benchmarks for Seastar-RS vs Seastar C++"
+
+[dependencies]
+seastar-core = { path = "../seastar-core" }
+tokio = { workspace = true, features = ["full"] }
+criterion = { version = "0.5", features = ["html_reports", "async_tokio"] }
+serde.workspace = true
+serde_json.workspace = true
+bytes.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+once_cell.workspace = true
+
+[dev-dependencies]
+tempfile = "3.8"
+
+[[bench]]
+name = "reactor_performance"
+harness = false
+
+[[bench]]  
+name = "memory_performance"
+harness = false
+
+[[bench]]
+name = "io_performance" 
+harness = false
+
+[[bench]]
+name = "network_performance"
+harness = false
+
+[[bench]]
+name = "rpc_performance"
+harness = false
+
+[[bench]]
+name = "http_performance"
+harness = false

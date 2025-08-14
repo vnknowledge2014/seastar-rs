@@ -1,0 +1,55 @@
+[package]
+name = "seastar-core"
+version.workspace = true
+authors.workspace = true 
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Core async runtime and futures for Seastar-RS"
+
+[dependencies]
+futures.workspace = true
+async-trait.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+bytes.workspace = true
+parking_lot.workspace = true
+crossbeam.workspace = true
+once_cell.workspace = true
+pin-project-lite.workspace = true
+libc.workspace = true
+num_cpus = "1.0"
+tokio = { workspace = true, features = ["rt", "macros", "signal", "sync", "time"] }
+mio.workspace = true
+rustls = "0.21"
+tokio-rustls = "0.24"
+rustls-pemfile = "1.0"
+webpki-roots = "0.25"
+tokio-tungstenite = "0.21"
+sha1 = "0.10"
+base64 = "0.21"
+futures-util = "0.3"
+http = "0.2"
+trust-dns-resolver = "0.23"
+memmap2 = "0.9"
+sqlx = { version = "0.7", features = ["runtime-tokio", "postgres", "mysql", "sqlite", "chrono", "uuid"], optional = true }
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager"], optional = true }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+io-uring = "0.6"
+
+[features]
+default = []
+database = ["sqlx", "redis"]
+postgres = ["sqlx"]
+mysql = ["sqlx"] 
+sqlite = ["sqlx"]
+redis-support = ["redis"]
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util"] }
+tempfile = "3.0"

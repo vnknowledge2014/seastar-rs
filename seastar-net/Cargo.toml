@@ -1,0 +1,34 @@
+[package]
+name = "seastar-net"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Networking stack for Seastar-RS"
+
+[dependencies]
+seastar-core = { path = "../seastar-core" }
+seastar-util = { path = "../seastar-util" }
+seastar-config = { path = "../seastar-config" }
+futures.workspace = true
+async-trait.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+bytes.workspace = true
+libc.workspace = true
+socket2.workspace = true
+tokio = { workspace = true, features = ["net", "time", "sync"] }
+mio = { workspace = true, features = ["net", "os-poll"] }
+nix = "0.27"
+memmap2.workspace = true
+once_cell.workspace = true
+parking_lot.workspace = true
+dashmap = "5.0"
+smallvec = "1.0"
+num_cpus = "1.0"
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util"] }

@@ -1,0 +1,41 @@
+[package]
+name = "seastar-distributed"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Distributed computing framework for Seastar-RS"
+
+[dependencies]
+seastar-core = { path = "../seastar-core" }
+seastar-net = { path = "../seastar-net" }
+seastar-util = { path = "../seastar-util" }
+seastar-config = { path = "../seastar-config" }
+futures.workspace = true
+async-trait.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+bytes.workspace = true
+serde = { workspace = true, features = ["derive"] }
+tokio = { workspace = true, features = ["net", "time", "sync", "rt-multi-thread", "macros"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
+parking_lot.workspace = true
+dashmap = "5.0"
+bincode = "1.0"
+ring = "0.17"
+once_cell.workspace = true
+rand = "0.8"
+memmap2.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util"] }
+tempfile = "3.0"
+
+[features]
+default = ["raft", "gossip", "sharding"]
+raft = []
+gossip = []
+sharding = []

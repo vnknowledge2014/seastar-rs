@@ -1,0 +1,81 @@
+# Seastar-RS Configuration Example (YAML)
+
+app:
+  name: "seastar-rs-demo"
+  version: "0.1.0"
+  environment: "development"
+  instance_id: "demo-001"
+
+reactor:
+  task_queue_size: 2048
+  io_polling_timeout_ms: 100
+  enable_io_uring: true
+  max_io_operations: 1024
+
+smp:
+  num_shards: 0  # Auto-detect CPU count
+  pin_threads: true
+  message_queue_size: 2048
+  enable_work_stealing: false
+
+# Uncomment to enable database
+# database:
+#   url: "postgres://localhost:5432/seastar_demo"
+#   max_connections: 20
+#   min_connections: 2
+#   connect_timeout_secs: 30
+#   query_timeout_secs: 30
+#   enable_logging: true
+
+metrics:
+  enabled: true
+  export_interval_secs: 60
+  http_server:
+    bind: "0.0.0.0"
+    port: 9090
+    enable_dashboard: true
+  prometheus:
+    registry: "seastar-demo"
+    enable_push_gateway: false
+
+logging:
+  level: "debug"
+  format: "text"
+  colored: true
+  structured: false
+  file:
+    path: "/var/log/seastar-rs/app.log"
+    max_size_mb: 100
+    max_files: 10
+    compress: true
+
+# Uncomment to enable TLS
+# tls:
+#   cert_file: "/etc/ssl/certs/seastar.pem"
+#   key_file: "/etc/ssl/private/seastar.key"
+#   require_client_cert: false
+#   min_version: "1.3"
+
+# Uncomment to enable WebSocket
+# websocket:
+#   max_message_size: 1048576  # 1MB
+#   max_frame_size: 65536      # 64KB
+#   ping_interval_secs: 30
+#   connection_timeout_secs: 60
+#   max_connections: 1000
+
+# Uncomment to enable testing features
+# testing:
+#   enabled: true
+#   data_dir: "/tmp/seastar-test-data"
+#   enable_chaos: false
+#   chaos:
+#     failure_rate: 0.01
+#     latency_injection_ms: 0
+#     enable_memory_pressure: false
+#     enable_cpu_pressure: false
+#   performance:
+#     enabled: true
+#     target_throughput: 10000
+#     max_latency_ms: 100
+#     duration_secs: 60
